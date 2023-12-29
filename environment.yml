@@ -1,0 +1,9 @@
+name: notebooks
+dependencies:
+  - ipython
+  - matplotlib
+  - pandas
+  - pip
+  - python
+  - scikit-learn
+  - jupyter
