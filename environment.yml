@@ -1,4 +1,4 @@
-name: notebooks
+name: NN-Notebooks
 dependencies:
   - ipython
   - matplotlib
@@ -7,3 +7,6 @@ dependencies:
   - python
   - scikit-learn
   - jupyter
+  - pytorch
+  - numpy
+  - tqdm
