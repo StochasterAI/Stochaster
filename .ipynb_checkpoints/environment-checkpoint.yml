@@ -1,5 +1,4 @@
-# Conda environment for Stochaster
-name: Stochaster
+name: NN-Notebooks
 dependencies:
   - ipython
   - matplotlib
@@ -10,4 +9,3 @@ dependencies:
   - jupyter
   - pytorch
   - numpy
-  - tqdm
