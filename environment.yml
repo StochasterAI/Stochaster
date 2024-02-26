@@ -1,13 +1,8 @@
 # Conda environment for Stochaster
 name: Stochaster
 dependencies:
-  - ipython
-  - matplotlib
-  - pandas
   - pip
   - python
-  - scikit-learn
-  - jupyter
   - pytorch
   - numpy
   - tqdm

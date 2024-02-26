@@ -1,9 +1,3 @@
-pip
-ipython
-matplotlib
-pandas
-scikit-learn
-jupyter
 torch
 numpy
 tqdm
