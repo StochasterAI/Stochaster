@@ -51,7 +51,7 @@ class Tensor:
     self.grad: Buffer = None if not requires_grad else buffer.ones_like(self.data)
     self.context: Function = None
 
-  # Numpy Properties.
+  # Numpy Properties
   
   @property
   def shape(self):
@@ -83,9 +83,12 @@ class Tensor:
     self.data[key] = value
 
   def backward(self):
+    '''
+    TODO: Implement backwards similar to below
     if not self.requires_grad:
       raise RuntimeError("This tensor is not marked to require gradients.")
     self.context.backward(self.grad)
+    '''
 
   def __str__(self):
     return str(self.data)
