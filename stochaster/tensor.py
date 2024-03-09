@@ -3,6 +3,7 @@ import numpy as _np
 from numpy.typing import ArrayLike
 from typing import Union, Type
 from stochaster.buffer import Buffer, buffer
+from stochaster.ops import Multiply
 
 
 class Function:
@@ -58,7 +59,7 @@ class Tensor:
   
   def dot(self, x: Tensor) -> Tensor:
     assert x.shape[0] == self.data.shape[1], "tensor's y-dimension must be same size as input tensor's x-dimension"
-    return 
+    return Multiply.apply(self, x)
 
 
   # Numpy Properties
