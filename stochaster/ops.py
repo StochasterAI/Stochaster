@@ -5,6 +5,18 @@ from numpy.typing import ArrayLike
 from stochaster.buffer import Buffer
 import math
 
+# Binary Ops
+
+class Multiply(Function):
+  def forward(self, x: Buffer, y: Buffer):
+    assert x.shape[0] == y.shape[1], "x's 0-dim must be same size as y's 1-dim"
+    self.x, self.y = x, y
+    return x * y
+  
+  def backward(self, grad: Buffer):
+    return _np.matmul(grad, self.y) if self.input_requires_grad[0] else None, \
+           _np.matmul(grad, self.x) if self.input_requires_grad[1] else None
+
 # Reshape/Move Operations
 
 class Expand(Function):

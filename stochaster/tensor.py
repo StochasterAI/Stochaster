@@ -58,7 +58,6 @@ class Tensor:
     return
   
   def dot(self, x: Tensor) -> Tensor:
-    assert x.shape[0] == self.data.shape[1], "tensor's y-dimension must be same size as input tensor's x-dimension"
     return Multiply.apply(self, x)
 
 
