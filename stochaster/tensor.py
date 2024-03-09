@@ -3,7 +3,7 @@ import numpy as _np
 from numpy.typing import ArrayLike
 from typing import Union, Type
 from stochaster.buffer import Buffer, buffer
-from stochaster.ops import Multiply
+from stochaster.ops import Multiply, Relu
 
 
 class Function:
@@ -59,6 +59,9 @@ class Tensor:
   
   def dot(self, x: Tensor) -> Tensor:
     return Multiply.apply(self, x)
+
+  def relu(self) -> Tensor:
+    return Relu.apply(self)
 
 
   # Numpy Properties
