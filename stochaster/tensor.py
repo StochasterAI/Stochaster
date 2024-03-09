@@ -19,8 +19,8 @@ class Function:
   
   def __init__(self, *tensors: Tensor):
     # check if we need to keep parents for grad
-    input_requires_grad = [t.requires_grad for t in tensors]
-    self.requires_grad = True if any(input_requires_grad) else False
+    self.input_requires_grad = [t.requires_grad for t in tensors]
+    self.requires_grad = True if any(self.input_requires_grad) else False
 
     self.parents = tensors if self.requires_grad else None
   
@@ -49,7 +49,17 @@ class Tensor:
     self.data: Buffer = buffer.array(data)
     self.requires_grad: bool = requires_grad
     self.grad: Buffer = None if not requires_grad else buffer.ones_like(self.data)
-    self.context: Function = None
+    self._context: Function = None
+
+  def backward(self, allow_fill=True):
+    if self._context is None:
+      return
+    return
+  
+  def dot(self, x: Tensor) -> Tensor:
+    assert x.shape[0] == self.data.shape[1], "tensor's y-dimension must be same size as input tensor's x-dimension"
+    return 
+
 
   # Numpy Properties
   
@@ -82,17 +92,10 @@ class Tensor:
   def __setitem__(self, key, value):
     self.data[key] = value
 
-  def backward(self):
-    '''
-    TODO: Implement backwards similar to below
-    if not self.requires_grad:
-      raise RuntimeError("This tensor is not marked to require gradients.")
-    self.context.backward(self.grad)
-    '''
-
   def __str__(self):
     return str(self.data)
 
   def __repr__(self):
     return "Tensor(" + str(self.data) + ", requires_grad=" + str(self.requires_grad) + ")"
+
 
