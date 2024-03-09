@@ -3,7 +3,7 @@ import numpy as _np
 from numpy.typing import ArrayLike
 from typing import Union, Type
 from stochaster.buffer import Buffer, buffer
-from stochaster.ops import Multiply, Relu
+from stochaster.ops import Multiply, Relu, LogSoftmax
 
 
 class Function:
@@ -62,6 +62,9 @@ class Tensor:
 
   def relu(self) -> Tensor:
     return Relu.apply(self)
+
+  def logsoftmax(self) -> Tensor:
+    return LogSoftmax.apply(self)
 
 
   # Numpy Properties
