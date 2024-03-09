@@ -161,3 +161,12 @@ class Sigmoid(Function):
 
   def backward(self, grad: Buffer) -> Buffer:
     return grad * self.forward_result * (1 - self.forward_result)
+
+class Softmax(Function):
+  def forward(self, tensor: Buffer) -> Buffer:
+    exps = _np.exp(tensor - _np.max(tensor))
+    self.softmax = exps / _np.sum(exps)
+    return self.softmax
+
+  def backward(self, grad: Buffer) -> Buffer:
+    return self.softmax * grad * (1.0 - self.softmax)
