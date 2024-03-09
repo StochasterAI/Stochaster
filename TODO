@@ -1,5 +1,5 @@
-1. implement tensor.dot(x: tensor) using ops.Multiply in ops.py
-2. implement tensor.relu() using ops.Relu in ops.py
+1. implement tensor.dot(x: tensor) using ops.Multiply in ops.py. DONE
+2. implement tensor.relu() using ops.Relu in ops.py. DONE
 3. implement ops.Softmax class in ops.py
 4. implement ops.LogSoftmax class in ops.py
 5. implement tensor.logsoftmax() using ops.LogSoftmax in ops.py
