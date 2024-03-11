@@ -1,9 +1,10 @@
-import numpy as _np
-from numpy.typing import ArrayLike
-from typing import Union
+from typing import Any, Tuple
+from numpy import *
+from numpy._typing import NDArray
 
-buffer = _np
+class Buffer(ndarray):
+  def __new__(self, *args, **kwargs):
+    return super().__new__(Buffer, *args, **kwargs)
 
-class Buffer(_np.ndarray):
-  def __init__(self, *args, **kwargs):
-    super().__init__()
+def rand(shape: Tuple, generator=None, **kwargs) -> Buffer:
+  return random.default_rng(generator).random(shape)
