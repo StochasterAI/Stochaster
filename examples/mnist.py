@@ -1,17 +1,18 @@
-'''from stochaster import tensor
+from stochaster.tensor import Tensor
 
 class StochasterBobNet:
   def __init__(self):
-    self.l1 = tensor(layer_init_uniform(784, 128))
-    self.l2 = tensor(layer_init_uniform(128, 10))
+    self.l1 = Tensor.uniform(784, 128)
+    self.l2 = Tensor.uniform(128, 10)
     return
 
-  def forward(self, x):
+  def forward(self, x: Tensor):
     return x.dot(self.l1).relu().dot(self.l2).logsoftmax()
   
 
 model = StochasterBobNet()
 
+'''
 from stochaster.optim import SGD
 from stochaster.nn import BCELoss
 

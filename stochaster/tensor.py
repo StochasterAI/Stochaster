@@ -2,7 +2,9 @@ from __future__ import annotations
 import numpy as _np
 from numpy.typing import ArrayLike
 from typing import Union, Type
-from stochaster.buffer import Buffer, buffer
+import stochaster.buffer as buffer
+from stochaster.buffer import Buffer
+from stochaster.helper import tupleargs
 from stochaster.ops import Multiply, Relu, LogSoftmax
 
 
@@ -66,7 +68,15 @@ class Tensor:
   def logsoftmax(self) -> Tensor:
     return LogSoftmax.apply(self)
 
+  # Randoms
 
+  @staticmethod
+  def random(*shape, generator=None, **kwargs):
+    return Tensor(buffer.rand(tupleargs(shape), generator, **kwargs), **kwargs)
+  
+  @staticmethod
+  def uniform(*shape, a=0.0, b=1.0, generator=None, **kwargs):
+    return Tensor.random(*shape, generator, **kwargs) * (b - a) + a
   # Numpy Properties
   
   @property
