@@ -70,12 +70,13 @@ class Tensor:
   # Randoms
 
   @staticmethod
-  def random(*shape, generator=None, **kwargs):
-    return Tensor(buffer.rand(tupleargs(shape), generator, **kwargs), **kwargs)
+  def random(*shape, **kwargs):
+    generator = kwargs.pop("generator", None)
+    return Tensor(buffer.rand(tupleargs(shape), generator), **kwargs)
   
   @staticmethod
-  def uniform(*shape, a=0.0, b=1.0, generator=None, **kwargs):
-    return Tensor.random(*shape, generator, **kwargs) * (b - a) + a
+  def uniform(*shape, a=0.0, b=1.0, **kwargs):
+    return Tensor.random(*shape, **kwargs) * (b - a) + a
   # Numpy Properties
   
   @property

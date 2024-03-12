@@ -2,8 +2,8 @@ from stochaster import Tensor
 
 class StochasterBobNet:
   def __init__(self):
-    self.l1 = Tensor.uniform(2, 3)
-    self.l2 = Tensor.uniform(3, 10)
+    self.l1 = Tensor.uniform(2, 3, generator=23)
+    self.l2 = Tensor.uniform(3, 10, generator=25)
     return
 
   def forward(self, x: Tensor):
