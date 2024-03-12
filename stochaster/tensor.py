@@ -5,8 +5,6 @@ from typing import Union, Type
 import stochaster.buffer as buffer
 from stochaster.buffer import Buffer
 from stochaster.helper import tupleargs
-from stochaster.ops import Multiply, Relu, LogSoftmax
-
 
 class Function:
   '''
@@ -45,6 +43,7 @@ class Function:
     
     return output
 
+from stochaster.ops import Multiply, Relu, LogSoftmax
 
 class Tensor:
 

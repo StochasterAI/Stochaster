@@ -1,9 +1,9 @@
-from stochaster.tensor import Tensor
+from stochaster import Tensor
 
 class StochasterBobNet:
   def __init__(self):
-    self.l1 = Tensor.uniform(784, 128)
-    self.l2 = Tensor.uniform(128, 10)
+    self.l1 = Tensor.uniform(2, 3)
+    self.l2 = Tensor.uniform(3, 10)
     return
 
   def forward(self, x: Tensor):
@@ -12,6 +12,7 @@ class StochasterBobNet:
 
 model = StochasterBobNet()
 
+print(model.l1.data, model.l2.data)
 '''
 from stochaster.optim import SGD
 from stochaster.nn import BCELoss
